@@ -1,0 +1,64 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+    <section class="ftco-section contact-section bg-light">
+      <div class="container">
+      	<div class="row d-flex mb-5 contact-info">
+          <div class="w-100"></div>
+          <div class="col-md-3 d-flex">
+          	<div class="info bg-white p-4">
+	            <p><span>Address:</span> Ocean Mall Karachi, Pakistan</p>
+	          </div>
+          </div>
+          <div class="col-md-3 d-flex">
+          	<div class="info bg-white p-4">
+	            <p><span>Phone:</span> <a href="tel://+923428041928">+92 3428041928</a></p>
+	          </div>
+          </div>
+          <div class="col-md-3 d-flex">
+          	<div class="info bg-white p-4">
+	            <p><span>Email:</span> <a href="mailto:sohailahmed34280@gmail.com">sohailahmed34280@gmail.com</a></p>
+	          </div>
+          </div>
+          <div class="col-md-3 d-flex">
+          	<div class="info bg-white p-4">
+	            <p><span>Website</span> <a href="https://github.com/sohail342" target="_blank">github.com/sohail342</a></p>
+	          </div>
+          </div>
+        </div>
+        <div class="row block-9 d-flex align-items-stretch">
+          <div class="col-md-6 d-flex align-items-center">
+              <img src="{% static 'images/brandLogo.svg' %}" class="img-fluid w-100 h-100" alt="Brand Logo" style="object-fit: cover;">
+          </div>
+          <div class="col-md-6 order-md-last d-flex">
+            <form class="bg-white p-5 contact-form w-100" method="post">
+              {% csrf_token %}
+              <div class="form-group">
+                {% if messages %}
+                  {% for message in messages %}
+                  <span{% if message.tags %} class="{{ message.tags }}"{% endif %} style="color: green">{{ message }}</span>
+                  {% endfor %}
+                {% endif %}
+              </div>
+              <div class="form-group">
+                {{ form.name }}
+              </div>
+              <div class="form-group">
+                {{ form.email }}
+              </div>
+              <div class="form-group">
+                {{ form.subject }}
+              </div>
+              <div class="form-group">
+                {{ form.message }}
+              </div>
+              <div class="form-group">
+                <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock %}
